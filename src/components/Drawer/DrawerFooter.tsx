@@ -9,11 +9,13 @@ const DrawerFooter = () => {
     const theme = useSelector((state: any) => state?.theme?.theme);
     const dispatch = useDispatch();
 
-    console.log(theme, 'theme');
-
     const handleToggle = () => {
         dispatch({
             type: "TOGGLE_DERICTION",
+        });
+
+        dispatch({
+            type: "TOGGLE_FLAG"
         });
     }
 
@@ -28,7 +30,7 @@ const DrawerFooter = () => {
             <IconButton
                 onClick={handleToggle}
                 className="transition-transform duration-1000 transform"
-                style={{ transform: isLTR ? 'rotate(0deg)' : 'rotate(180deg)' }}
+                style={{ transform: isLTR ? 'rotate(180deg)' : 'rotate(0deg)' }}
             >
                 <Arrow />
             </IconButton>

@@ -35,7 +35,6 @@ const DrawerContent = () => {
                         <Typography
                             style={{
                                 fontWeight: 'bold',
-                                color: '#1C1D22',
                                 opacity: open ? 1 : 0.5,
                             }}
                         >

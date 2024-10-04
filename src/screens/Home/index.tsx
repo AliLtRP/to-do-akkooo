@@ -5,17 +5,26 @@ import { useSelector } from 'react-redux';
 
 const Home = () => {
     const theme = useSelector((state: any) => state?.theme?.theme?.palette?.background?.default);
+    const drawerFlag = useSelector((state: any) => state?.drawerFlag?.flag);
 
     return (
-        <div className='w-full h-full flex overflow-clip'>
+        <div className='w-full h-full flex overflow-hidden'>
             <Sider />
-            <DrawerContent />
 
-            <AppBar position="static" style={{ width: '100%', backgroundColor: theme, boxShadow: "none", zIndex: '0' }}>
-                <Toolbar>
-                    <Typography className='text-black' variant="h6">Welcome back, Vincent 👋</Typography>
-                </Toolbar>
-            </AppBar>
+            <div
+                className={`transform ${drawerFlag ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`}
+                style={{ minWidth: '18rem' }}
+            >
+                <DrawerContent />
+            </div>
+
+            <div className={`flex-grow ${drawerFlag ? 'ml-0' : '-ml-72'} transition-all duration-300 ease-in-out`}>
+                <AppBar position="static" style={{ backgroundColor: theme, boxShadow: "none" }}>
+                    <Toolbar>
+                        <Typography variant="h6">Welcome back, Vincent 👋</Typography>
+                    </Toolbar>
+                </AppBar>
+            </div>
         </div>
     );
 };

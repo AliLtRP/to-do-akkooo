@@ -23,8 +23,6 @@ const Sider = () => {
         setSelect(pos);
     }
 
-    console.log(toggle);
-
     return (
         <Drawer
             variant="permanent"
