@@ -21,7 +21,7 @@ const DrawerContent = () => {
     console.log(theme, 'theme');
 
     return (
-        <div className={`${theme === '#F9F9FE' ? "bg-white" : "bg-[#222327]"} h-screen min-w-72 w-72 px-4 py-6 flex flex-col gap-4`}>
+        <div className={`${theme === '#F9F9FE' ? "bg-white" : "bg-[#222327]"} h-screen min-w-72 w-72 px-4 py-6 flex flex-col gap-4 `}>
             <div className='flex justify-between items-center'>
                 <Typography variant="h5">
                     Projects️

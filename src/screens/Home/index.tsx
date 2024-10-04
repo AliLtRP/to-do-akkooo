@@ -7,7 +7,6 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import Calender from '../../icons/calendar';
 import StackIcon from '../../icons/stack';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import Dots from '../../icons/dots';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const Home = () => {
@@ -29,7 +28,7 @@ const Home = () => {
 
             <div className={`flex-grow ${drawerFlag ? 'ml-0' : '-ml-72'} transition-all duration-300 ease-in-out`}>
                 <AppBar position="static" style={{ backgroundColor: theme !== "#000000" ? "#fff" : "#292B31", boxShadow: "none", height: "100%" }}>
-                    <Toolbar className='w-full flex flex-col'>
+                    <Toolbar className='w-full h-full flex flex-col'>
                         <div className='w-full flex items-center justify-between py-6'>
                             <Typography variant="h6" style={{ color: textColor }}>
                                 Welcome back, Vincent 👋
@@ -58,7 +57,7 @@ const Home = () => {
                                             Board view
                                         </Typography>
 
-                                        <div className={`w-[102%] border-b-[1.5px] ${theme !== "#000000" ? "border-black" : "border-white"} -bottom-[11.5px] absolute`}></div>
+                                        <div className={`w-[102%] z-10 border-b-[1.5px] ${theme !== "#000000" ? "border-black" : "border-white"} -bottom-[11.5px] absolute`}></div>
                                     </div>
 
                                     <div className='flex items-center gap-2'>
@@ -89,7 +88,13 @@ const Home = () => {
                                 </div>
                             </div>
 
-                            <div className={`w-[87%] border-[1.5px] ${theme === "#000000" ? "border-[#ffffff16]" : "border-[#1c1d2216]"} absolute bottom-0 right-0`}></div>
+                            <div className={`w-full z-0 border-[1.5px] ${theme === "#000000" ? "border-[#ffffff16]" : "border-[#1c1d2216]"} absolute bottom-0 right-0`}></div>
+                        </div>
+
+                        <div className='w-full h-full shadow-sm flex gap-6 py-6 justify-between'>
+                            <div className='h-full basis-1/3 border-white border-[2px] border-dashed rounded-xl'>ssdf</div>
+                            <div className='h-full basis-1/3 border-white border-[2px] border-dashed rounded-xl'>ssdf</div>
+                            <div className='h-full basis-1/3 border-white border-[2px] border-dashed rounded-xl'>ssdf</div>
                         </div>
                     </Toolbar>
                 </AppBar>
