@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const Switch = () => {
     const dispatch = useDispatch();
 
-    const themeColor = useSelector((state: any) => state?.theme?.theme?.palette?.mode);
+    const themeColor = useSelector((state: any) => state?.theme?.theme?.palette?.background?.default);
 
     const handleThemeColor = () => {
         dispatch({
@@ -16,9 +16,9 @@ const Switch = () => {
     };
 
     return (
-        <div className='bg-[#1c1d2238] rounded-[22px] h-[42px] flex items-center justify-between p-2 absolute bottom-9 w-72'>
+        <div className='bg-[#1c1d2238] rounded-[22px] h-[42px] flex items-center justify-between p-2 absolute bottom-9 w-64'>
             <div
-                className={`${themeColor === 'light' ? 'bg-white' : 'bg-transparent'} basis-1/2 h-[33px] flex items-center rounded-2xl relative`}
+                className={` basis-1/2 h-[33px] flex items-center rounded-2xl relative`}
                 onClick={() => themeColor !== 'light' && handleThemeColor()}
             >
                 <div className='flex items-center mx-auto'>

@@ -4,8 +4,10 @@ import { useState } from 'react';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import Collapsed from '../collapse';
 import Switch from '../switch';
+import { useSelector } from 'react-redux';
 
 const DrawerContent = () => {
+    const theme = useSelector((state: any) => state?.theme?.theme?.palette?.background?.default);
     const [open, setOpen] = useState(false);
 
     const handleMenuClick = () => {
@@ -16,8 +18,10 @@ const DrawerContent = () => {
         setOpen(false);
     };
 
+    console.log(theme, 'theme');
+
     return (
-        <div className="bg-white h-screen min-w-72 w-72 px-4 py-6 flex flex-col gap-4">
+        <div className={`${theme === '#F9F9FE' ? "bg-white" : "bg-black"} h-screen min-w-72 w-72 px-4 py-6 flex flex-col gap-4`}>
             <div className='flex justify-between items-center'>
                 <Typography variant="h5">
                     Projects️

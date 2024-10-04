@@ -7,7 +7,7 @@ const Home = () => {
     const theme = useSelector((state: any) => state?.theme?.theme?.palette?.background?.default);
 
     return (
-        <div className='w-full h-full flex overflow-clip bg-black'>
+        <div className='w-full h-full flex overflow-clip'>
             <Sider />
             <DrawerContent />
 
