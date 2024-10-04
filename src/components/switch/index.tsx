@@ -16,12 +16,12 @@ const Switch = () => {
     };
 
     return (
-        <div className='bg-[#1c1d2238] rounded-[22px] h-[42px] flex items-center justify-between p-2 absolute bottom-9 w-64 select-none'>
+        <div className={`${themeColor === "#000000" ? "bg-[#ffffff0a]" : "bg-[#1c1d2238]"} rounded-[22px] h-[42px] flex items-center justify-between p-2 absolute bottom-9 w-64 select-none`}>
             <div
                 className={` basis-1/2 h-[33px] flex items-center rounded-2xl relative`}
-                onClick={() => themeColor !== '#000000' && handleThemeColor()}
+                onClick={() => themeColor === '#000000' && handleThemeColor()}
             >
-                <div className='flex items-center mx-auto cursor-pointer'>
+                <div className={`flex items-center mx-auto cursor-pointer  ${themeColor !== '#000000' ? "rounded-full m-1 px-6 bg-white" : ""}`}>
                     <LightModeRoundedIcon fontSize='small' className='mx-2' />
                     <Typography variant='h6'>
                         Light
@@ -31,9 +31,9 @@ const Switch = () => {
 
             <div
                 className={`${themeColor === 'dark' ? 'bg-[#ffffff06]' : 'bg-transparent'} basis-1/2 h-[33px] flex items-center rounded-2xl relative`}
-                onClick={() => themeColor === '#000000' && handleThemeColor()}
+                onClick={() => themeColor !== '#000000' && handleThemeColor()}
             >
-                <div className='flex items-center mx-auto cursor-pointer'>
+                <div className={`flex items-center mx-auto cursor-pointer  ${themeColor === '#000000' ? "rounded-full m-1 px-6 bg-[#ffffff0d]" : ""}`}>
                     <NightlightRoundRoundedIcon fontSize='small' className='rotate-[-45deg] mr-1.5 mt-1' />
                     <Typography variant='h6'>
                         Dark
