@@ -3,13 +3,17 @@ import { IThemeAction } from "../../types";
 
 const initialState = {
     theme: createTheme({
+        typography: {
+            fontFamily: '"Exo 2", sans-serif',
+        },
         palette: {
-            mode: 'light',
+            mode: "light",
             background: {
-                default: '#F9F9FE',
-                paper: '#EEEEF9',
+                default: "#F9F9FE",
+                paper: "#EEEEF9",
             },
         },
+        direction: "ltr",
     }),
 };
 
@@ -25,23 +29,23 @@ export const themeReducer = (state = initialState, action: IThemeAction) => {
                 ...state,
                 theme: createTheme({
                     ...state.theme,
-                    direction: state.theme.direction === 'ltr' ? 'rtl' : 'ltr',
+                    direction: state.theme.direction === "ltr" ? "rtl" : "ltr",
                 }),
             };
         case "TOGGLE_THEME":
-            const isLightMode = state.theme.palette.mode === 'light';
+            const isLightMode = state.theme.palette.mode === "light";
             return {
                 ...state,
                 theme: createTheme({
                     palette: {
-                        mode: isLightMode ? 'dark' : 'light',
+                        mode: isLightMode ? "dark" : "light",
                         background: {
-                            default: isLightMode ? '#000000' : '#F9F9FE',
-                            paper: isLightMode ? '#333333' : '#EEEEF9',
+                            default: isLightMode ? "#000000" : "#F9F9FE",
+                            paper: isLightMode ? "#333333" : "#EEEEF9",
                         },
                     },
                     typography: {
-                        fontFamily: '"Exo 2", "Roboto", sans-serif',
+                        fontFamily: '"Exo 2", sans-serif',
                     },
                 }),
             };

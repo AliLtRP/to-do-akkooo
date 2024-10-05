@@ -3,10 +3,12 @@ import Progress from '../../../icons/progress'
 import Clip from '../../../icons/clip'
 import CommentICon from '../../../icons/comment'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { useTranslation } from 'react-i18next';
 
 
 const TodoCard = ({ theme }: { theme: string }) => {
-
+    const { t } = useTranslation();
+    
     const isLight = (): string => {
         if(theme !== '#000000') {
             return "#fff"
@@ -63,7 +65,7 @@ const TodoCard = ({ theme }: { theme: string }) => {
                         <div className='flex items-center gap-2'>
                             <Progress percent={50} color={progressTypoColor}/>
                             <Typography variant="h6" style={{ fontSize: '14px', fontWeight: '500', color: progressTypoColor() }}>
-                                Progress
+                                {t('Progress')}
                             </Typography>
                         </div>
 

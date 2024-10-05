@@ -5,10 +5,12 @@ import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownR
 import Collapsed from '../collapse';
 import Switch from '../switch';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const DrawerContent = () => {
     const theme = useSelector((state: any) => state?.theme?.theme?.palette?.background?.default);
     const [open, setOpen] = useState(false);
+    const { t } = useTranslation();
 
     const handleMenuClick = () => {
         setOpen((prevOpen) => !prevOpen);
@@ -18,13 +20,11 @@ const DrawerContent = () => {
         setOpen(false);
     };
 
-    console.log(theme, 'theme');
-
     return (
         <div className={`${theme === '#F9F9FE' ? "bg-white" : "bg-[#222327]"} h-screen min-w-72 w-72 px-4 py-6 flex flex-col gap-4 ${theme === '#F9F9FE' ? "border-r-[0.5px]" : ""}`}>
             <div className='flex justify-between items-center'>
                 <Typography variant="h5">
-                    Projects️
+                    {t('Projects️')}
                 </Typography>
                 <AddCircleIcon />
             </div>
@@ -38,7 +38,7 @@ const DrawerContent = () => {
                                 opacity: open ? 1 : 0.5,
                             }}
                         >
-                            Team
+                            {t('Team')}
                         </Typography>
                         <KeyboardArrowDownRoundedIcon
                             onClick={handleMenuClick}

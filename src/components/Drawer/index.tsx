@@ -1,5 +1,5 @@
-import { Drawer } from '@mui/material'
-import { useState } from 'react'
+import { Drawer } from '@mui/material';
+import { useState } from 'react';
 import Logo from "../../icons/Logo";
 import UserIcon from "../../icons/user";
 import Calendar from "../../icons/calendar";
@@ -8,20 +8,26 @@ import Docs from '../../icons/docs';
 import Settings from '../../icons/settings';
 import Home from '../../icons/Home';
 import DrawerFooter from './DrawerFooter';
-
+import i18n from '../../i18n';
 
 const Sider = () => {
-    const [toggle, setToggle] = useState<boolean | undefined>(false);
+    const [toggle, setToggle] = useState<boolean>(true);
     const [select, setSelect] = useState<number>(0);
-
 
     const handleClick = () => {
         setToggle(!toggle);
-    }
+    };
 
     const handleSelect = (pos: number) => {
         setSelect(pos);
-    }
+    };
+
+    const handlePos = () => {
+        return {
+            right: i18n.dir() === 'rtl' ? 0 : 'auto',
+            left: i18n.dir() === "ltr" ? 0 : 'auto',
+        };
+    };
 
     return (
         <Drawer
@@ -29,14 +35,17 @@ const Sider = () => {
             open={toggle}
             onClick={handleClick}
             sx={{
-                backgroundColor: '#1C1D22',
                 width: '90px',
+                flexShrink: 0,
+                ...handlePos(),
                 '& .MuiDrawer-paper': {
                     backgroundColor: '#1C1D22',
                     width: '90px',
+                    borderRight: 'none',
+                    ...handlePos(),
                 },
-            }}>
-
+            }}
+        >
             <div className='h-full flex flex-col justify-between items-center py-10'>
                 <div className='w-full h-full flex flex-col items-center gap-10'>
                     <Logo />
@@ -51,7 +60,7 @@ const Sider = () => {
                 <DrawerFooter />
             </div>
         </Drawer>
-    )
-}
+    );
+};
 
-export default Sider
+export default Sider;

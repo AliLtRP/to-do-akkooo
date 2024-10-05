@@ -2,10 +2,12 @@ import { Typography } from '@mui/material';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import NightlightRoundRoundedIcon from '@mui/icons-material/NightlightRoundRounded';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 
 const Switch = () => {
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     const themeColor = useSelector((state: any) => state?.theme?.theme?.palette?.background?.default);
 
@@ -24,7 +26,7 @@ const Switch = () => {
                 <div className={`flex items-center mx-auto cursor-pointer  ${themeColor !== '#000000' ? "rounded-full m-1 px-6 bg-white" : ""}`}>
                     <LightModeRoundedIcon fontSize='small' className='mx-2' />
                     <Typography variant='h6'>
-                        Light
+                        {t('Light')}
                     </Typography>
                 </div>
             </div>
@@ -36,7 +38,7 @@ const Switch = () => {
                 <div className={`flex items-center mx-auto cursor-pointer  ${themeColor === '#000000' ? "rounded-full m-1 px-6 bg-[#ffffff0d]" : ""}`}>
                     <NightlightRoundRoundedIcon fontSize='small' className='rotate-[-45deg] mr-1.5 mt-1' />
                     <Typography variant='h6'>
-                        Dark
+                        {t('Dark')}
                     </Typography>
                 </div>
             </div>
