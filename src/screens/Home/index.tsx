@@ -101,9 +101,9 @@ const Home = () => {
                         </div>
 
                         <div className='w-full h-full flex gap-6 py-6 justify-between drop-shadow-sm'>
-                            <Todo theme={theme} />
-                            <Todo theme={theme} />
-                            <Todo theme={theme} />
+                            <Todo type='todo' theme={theme} />
+                            <Todo type='progress' theme={theme} />
+                            <Todo type='done' theme={theme} />
                         </div>
 
                     </Toolbar>

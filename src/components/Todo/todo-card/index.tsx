@@ -4,13 +4,14 @@ import Clip from '../../../icons/clip'
 import CommentICon from '../../../icons/comment'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { useTranslation } from 'react-i18next';
+import { ITodo } from '../../../types';
 
 
-const TodoCard = ({ theme }: { theme: string }) => {
+const TodoCard = ({ theme, todo }: { theme: string, todo: ITodo }) => {
     const { t } = useTranslation();
-    
+
     const isLight = (): string => {
-        if(theme !== '#000000') {
+        if (theme !== '#000000') {
             return "#fff"
         }
 
@@ -18,7 +19,7 @@ const TodoCard = ({ theme }: { theme: string }) => {
     }
 
     const progressTypoColor = () => {
-        if(theme !== '#000000') {
+        if (theme !== '#000000') {
             return "#8D8E90"
         }
 
@@ -26,7 +27,7 @@ const TodoCard = ({ theme }: { theme: string }) => {
     }
 
     const dateBackgroundColor = () => {
-        if(theme !== "#000000") {
+        if (theme !== "#000000") {
             return "#F3F3F6"
         }
 
@@ -34,7 +35,7 @@ const TodoCard = ({ theme }: { theme: string }) => {
     }
 
     const dateColor = () => {
-        if(theme !== "#000000") {
+        if (theme !== "#000000") {
             return "#888DA7";
         }
 
@@ -47,7 +48,7 @@ const TodoCard = ({ theme }: { theme: string }) => {
                 <div className='w-full h-10 flex flex-col justify-between mb-2.5'>
                     <div className='flex w-full items-center justify-between'>
                         <Typography variant="h6" style={{ fontSize: '16px', fontWeight: '800' }}>
-                            Design system update
+                            {todo?.title}
                         </Typography>
 
                         <div className={`flex justify-center items-center border-[2px] ${theme === "#000000" ? "border-[#3F4147]" : "border-[#E8E8E9]"} rounded-full`}>
@@ -56,14 +57,14 @@ const TodoCard = ({ theme }: { theme: string }) => {
                     </div>
 
                     <Typography variant="h6" style={{ fontSize: '14px', color: "#8D8E90", fontWeight: '500' }}>
-                        Oreo website project
+                        {todo?.description}
                     </Typography>
                 </div>
 
                 <div className='flex flex-col gap-2 justify-between'>
                     <div className='flex w-full h-10 items-center justify-between'>
                         <div className='flex items-center gap-2'>
-                            <Progress percent={50} color={progressTypoColor}/>
+                            <Progress percent={50} color={progressTypoColor} />
                             <Typography variant="h6" style={{ fontSize: '14px', fontWeight: '500', color: progressTypoColor() }}>
                                 {t('Progress')}
                             </Typography>
@@ -85,13 +86,13 @@ const TodoCard = ({ theme }: { theme: string }) => {
 
                         <div className='flex items-center gap-3'>
                             <div className='flex items-center gap-1.5'>
-                                <CommentICon color={progressTypoColor}/>
+                                <CommentICon color={progressTypoColor} />
                                 <Typography style={{ fontSize: '14px' }} >
                                     2
                                 </Typography>
                             </div>
                             <div className='flex items-center gap-1.5'>
-                                <Clip color={progressTypoColor}/>
+                                <Clip color={progressTypoColor} />
                                 <Typography style={{ fontSize: '14px' }} >
                                     2
                                 </Typography>

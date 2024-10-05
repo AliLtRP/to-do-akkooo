@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 import { themeReducer } from "./themeReducer";
 import { drawerReducer } from "./drawerReducer";
+import { todoReducer } from "./todoReducer";
 
 
 export const reducers = combineReducers({
     theme: themeReducer,
-    drawerFlag: drawerReducer
+    drawerFlag: drawerReducer,
+    todo: todoReducer
 })

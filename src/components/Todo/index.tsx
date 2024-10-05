@@ -2,9 +2,13 @@ import TodoCard from './todo-card'
 import { Typography } from '@mui/material'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { ITodo } from '../../types';
+import { useMemo } from 'react';
 
-const Todo = ({ theme }: { theme: string }) => {
+const Todo = ({ theme, type }: { theme: string, type: string }) => {
     const { t } = useTranslation();
+    const todo = useSelector((state: any) => state?.todo);
 
     const typoColor = () => {
         if (theme !== "#000000") {
@@ -13,6 +17,18 @@ const Todo = ({ theme }: { theme: string }) => {
 
         return "#8C8D8F"
     }
+
+    const handleTodo = () => {
+        if (type === "todo") {
+            return todo?.todo
+        } else if (type === "progress") {
+            return todo?.progress;
+        } else {
+            return todo?.done
+        }
+    }
+
+    const todoTasks = useMemo(() => handleTodo(), [type]);
 
     return (
         <div className=' max-h-[calc(100%-102px)] h-full flex flex-col gap-3 basis-1/3 rounded-xl p-3'>
@@ -31,12 +47,13 @@ const Todo = ({ theme }: { theme: string }) => {
             </div>
 
             <div className='flex flex-col overflow-y-scroll gap-4 no-scrollbar'>
-                <TodoCard theme={theme} />
-                <TodoCard theme={theme} />
-                <TodoCard theme={theme} />
-                <TodoCard theme={theme} />
-                <TodoCard theme={theme} />
-                <TodoCard theme={theme} />
+                {
+                    todoTasks?.map((v: ITodo) => {
+                        return (
+                            <TodoCard todo={v} theme={theme} />
+                        );
+                    })
+                }
             </div>
         </div>
     )
