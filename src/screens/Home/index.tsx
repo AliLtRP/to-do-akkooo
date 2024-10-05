@@ -55,9 +55,9 @@ const Home = () => {
                                 <SearchIcon style={{ color: textColor }} />
                                 <NotificationsIcon style={{ color: textColor }} />
 
-                                <Calender color={textColor} className="-ml-5" />
+                                <Calender color={textColor} className={`${i18n.dir() === "ltr" ? "-ml-5" : "-ml-0"}`} />
 
-                                <Typography variant="h6" style={{ color: textColor, fontWeight: "600", marginLeft: "-20px" }}>
+                                <Typography variant="h6" style={{ color: textColor, fontWeight: "600", marginLeft: i18n.dir() === "ltr" ? "-20px" : "0px" }}>
                                     19 May 2022
                                 </Typography>
 

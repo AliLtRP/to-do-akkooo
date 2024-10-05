@@ -6,6 +6,7 @@ import Collapsed from '../collapse';
 import Switch from '../switch';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import i18n from '../../i18n';
 
 const DrawerContent = () => {
     const theme = useSelector((state: any) => state?.theme?.theme?.palette?.background?.default);
@@ -19,6 +20,14 @@ const DrawerContent = () => {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const handleListIcon = () => {
+        if (open) {
+            return i18n.dir() === "ltr" ? "rotate(0deg)" : "rotate(0deg)";
+        } else {
+            return i18n.dir() === "ltr" ? "rotate(-90deg)" : "rotate(90deg)";
+        }
+    }
 
     return (
         <div className={`${theme === '#F9F9FE' ? "bg-white" : "bg-[#222327]"} h-screen min-w-72 w-72 px-4 py-6 flex flex-col gap-4 ${theme === '#F9F9FE' ? "border-r-[0.5px]" : ""}`}>
@@ -42,7 +51,7 @@ const DrawerContent = () => {
                         </Typography>
                         <KeyboardArrowDownRoundedIcon
                             onClick={handleMenuClick}
-                            style={{ cursor: 'pointer', rotate: open ? '0deg' : '-90deg' }}
+                            style={{ cursor: 'pointer', transform: handleListIcon() }}
                         />
                     </div>
 

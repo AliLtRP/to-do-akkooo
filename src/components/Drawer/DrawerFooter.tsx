@@ -1,12 +1,11 @@
 import { IconButton } from "@mui/material"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { useState } from "react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import i18n from "../../i18n";
 
 
 const DrawerFooter = () => {
-    const theme = useSelector((state: any) => state?.theme?.theme);
     const dispatch = useDispatch();
     const [flag, setFlag] = useState(false);
 
