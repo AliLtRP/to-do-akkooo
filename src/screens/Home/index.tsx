@@ -19,14 +19,6 @@ const Home = () => {
 
     const textColor = theme === '#000000' ? '#FFFFFF' : '#1C1D22';
 
-    const handleDir = () => {
-        const newLanguage = i18n.language === "en" ? "ar" : "en";
-        i18n.changeLanguage(newLanguage);
-
-        const newDir = i18n.dir(newLanguage);
-        document.body.dir = newDir;
-    };
-
     return (
         <div className={`w-full h-full flex overflow-hidden`} dir={i18n.dir()}>
             <Sider />
@@ -70,7 +62,7 @@ const Home = () => {
                                 <div className='flex gap-4'>
                                     <div className='flex items-center gap-2 relative'>
                                         <StackIcon className="mt-0.5" color={theme === "#000000" ? "#fff" : "#1C1D22"} />
-                                        <Typography variant='h6' style={{ fontWeight: "600", color: textColor }}>
+                                        <Typography variant='h6' style={{ fontWeight: "600", color: textColor, fontSize: '16px' }}>
                                             {t('Board view')}
                                         </Typography>
 
@@ -80,7 +72,7 @@ const Home = () => {
                                     <div className='flex items-center gap-2'>
                                         <AddCircleIcon fontSize="small" className={`${theme === "#000000" ? "text-[#fff]" : "text-[#1C1D22]"}`} style={{ marginTop: "3px" }} />
 
-                                        <Typography variant='h6' style={{ fontWeight: "600", color: theme === "#000000" ? "#FFFFFF" : "#1C1D22", opacity: '0.5' }}>
+                                        <Typography variant='h6' style={{ fontWeight: "600", fontSize: '16px', color: theme === "#000000" ? "#FFFFFF" : "#1C1D22", opacity: '0.5' }}>
                                             {t('Add view')}
                                         </Typography>
                                     </div>
@@ -104,8 +96,6 @@ const Home = () => {
                                     </button>
                                 </div>
                             </div>
-
-                            <button onClick={handleDir} className='text-black'>toggle</button>
 
                             <div className={`w-full z-0 border-[1.5px] ${theme === "#000000" ? "border-[#ffffff16]" : "border-[#1c1d2216]"} absolute bottom-0 right-0`}></div>
                         </div>
