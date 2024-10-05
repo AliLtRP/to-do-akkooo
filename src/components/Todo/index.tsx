@@ -4,12 +4,18 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const Todo = ({ theme }: { theme: string }) => {
 
-    console.log(theme, 'sdsdssd');
+    const typoColor = () => {
+        if(theme !== "#000000") {
+            return "#919295"
+        }
+
+        return "#8C8D8F"
+    }
 
     return (
         <div className=' max-h-[calc(100%-102px)] h-full flex flex-col gap-3 basis-1/3 rounded-xl p-3'>
             <div className='flex justify-between items-center'>
-                <Typography variant="h6" className='font-semibold text-sm' style={{ fontWeight: "600", fontSize: "14px" }}>
+                <Typography variant="h6" className='font-semibold text-sm' style={{ fontWeight: "600", fontSize: "14px", color: typoColor() }}>
                     To do (4)
                 </Typography>
 

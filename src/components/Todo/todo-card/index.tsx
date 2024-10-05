@@ -1,4 +1,4 @@
-import { Card, CardContent, LinearProgress, Typography } from '@mui/material'
+import { Card, CardContent, Typography } from '@mui/material'
 import Progress from '../../../icons/progress'
 import Clip from '../../../icons/clip'
 import CommentICon from '../../../icons/comment'
@@ -48,7 +48,7 @@ const TodoCard = ({ theme }: { theme: string }) => {
                             Design system update
                         </Typography>
 
-                        <div className={`flex justify-center items-center border-[2px] ${theme === "#000000" ? "border-[#ffffff25]" : "border-[#00000025]"} border-[#ffffff25] rounded-full`}>
+                        <div className={`flex justify-center items-center border-[2px] ${theme === "#000000" ? "border-[#3F4147]" : "border-[#E8E8E9]"} rounded-full`}>
                             <MoreHorizIcon style={{ color: theme === "#000000" ? "#fff" : "#1C1D22" }} fontSize="small" />
                         </div>
                     </div>
@@ -72,7 +72,9 @@ const TodoCard = ({ theme }: { theme: string }) => {
                         </Typography>
                     </div>
 
-                    <LinearProgress variant="determinate" value={10} />
+                    <div className='w-full rounded-lg bg-[#EDEDED] flex'>
+                        <span className='bg-black w-10 p-0.5 rounded-lg'></span>
+                    </div>
 
                     <div className='w-full flex items-center justify-between mt-2'>
                         <Typography style={{ backgroundColor: dateBackgroundColor(), fontSize: '14px', fontWeight: '600', color: dateColor() }} className='px-4 py-2 rounded-full'>

@@ -79,7 +79,7 @@ const Home = () => {
                                         Sort
                                     </Typography>
 
-                                    <div className={`flex justify-center items-center border-[2px] ${theme === "#000000" ? "border-[#ffffff25]" : "border-[#00000025]"} border-[#ffffff25] rounded-full p-`}>
+                                    <div className={`flex justify-center items-center border-[2px] ${theme === "#000000" ? "border-[#5a5c65]" : "border-[#E8E8E9]"} rounded-full`}>
                                         <MoreHorizIcon style={{ color: theme === "#000000" ? "#fff" : "#1C1D22" }} fontSize="small" />
                                     </div>
 
