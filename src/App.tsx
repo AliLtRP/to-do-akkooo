@@ -6,7 +6,7 @@ function App() {
   const theme = useSelector((state: any) => state?.theme?.theme?.palette?.background?.default);
 
   return (
-    <div className={`${theme === '#000000' ? "!text-white" : "!text-[#1C1D22]"} exo-2`}>
+    <div className={`${theme === '#000000' ? "!text-white" : "!text-[#1C1D22]"} exo-2 fade-in`}>
       <Home />
     </div>
   )
