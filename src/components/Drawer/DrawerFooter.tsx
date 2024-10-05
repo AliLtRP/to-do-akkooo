@@ -1,13 +1,14 @@
 import { IconButton } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
-import Arrow from "../../icons/arrow";
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import i18n from "../../i18n";
 
 
 const DrawerFooter = () => {
     const theme = useSelector((state: any) => state?.theme?.theme);
     const dispatch = useDispatch();
+    const [flag, setFlag] = useState(false);
 
     const handleToggle = () => {
         dispatch({
@@ -19,20 +20,19 @@ const DrawerFooter = () => {
         });
     }
 
-    const [isLTR, setIsLTR] = useState(theme.direction === 'ltr');
-
-    useEffect(() => {
-        setIsLTR(theme.direction === 'ltr');
-    }, [theme.direction]);
+    const handleIcon = () => {
+        setFlag(!flag);
+        handleToggle()
+    }
 
     return (
         <div className='flex flex-col items-center justify-end bg-[#1C1D22]'>
             <IconButton
-                onClick={handleToggle}
+                onClick={handleIcon}
                 className="transition-transform duration-1000 transform"
-                style={{ transform: isLTR ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                style={{ transform: flag ? 'rotate(180deg)' : 'rotate(0deg)' }}
             >
-                <Arrow />
+                <ArrowForwardIosIcon style={{ color: "#8D8E90", transform: i18n.dir() === 'ltr' ? 'rotate(0deg)' : 'rotate(180deg)' }} />
             </IconButton>
         </div>
     )
