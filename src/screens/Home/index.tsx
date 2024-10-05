@@ -92,7 +92,7 @@ const Home = () => {
                             <div className={`w-full z-0 border-[1.5px] ${theme === "#000000" ? "border-[#ffffff16]" : "border-[#1c1d2216]"} absolute bottom-0 right-0`}></div>
                         </div>
 
-                        <div className='w-full h-full shadow-sm flex gap-6 py-6 justify-between'>
+                        <div className='w-full h-full flex gap-6 py-6 justify-between drop-shadow-sm'>
                             <Todo theme={theme} />
                             <Todo theme={theme} />
                             <Todo theme={theme} />
