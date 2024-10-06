@@ -17,5 +17,6 @@
   "Team": "Team",
   "title": "Title",
   "description": "Description",
-  "Add Task": "Add Task"
+  "Add Task": "Add Task",
+  "titleEmpty": "Title Is Empty"
 }

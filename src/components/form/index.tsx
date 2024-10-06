@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 const Form = () => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
+    const [warning, setWarning] = useState<boolean>(false);
 
     const [task, setTask] = useState({
         title: "",
@@ -18,6 +19,10 @@ const Form = () => {
     const handleTask = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
+        if (name === 'title') {
+            setWarning(false);
+        }
+
         setTask((prev) => ({
             ...prev,
             [name]: value
@@ -26,8 +31,13 @@ const Form = () => {
 
     const addTask = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(task, 'add task');
 
+        if (task.title.length === 0) {
+            setWarning(true);
+            return;
+        }
+
+        setWarning(false);
         dispatch({ type: "ADD_TASK", payload: task });
         dispatch({ type: "TOGGLE_FORM_FLAG" });
     };
@@ -40,6 +50,7 @@ const Form = () => {
                 <div className="mb-5">
                     <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{t('title')}</label>
                     <input type="text" name="title" className="border border-gray-300 px-2 py-1 rounded-lg w-full" onChange={handleTask} />
+                    {warning && <label htmlFor="title" className="pt-0.5 block mb-2 text-sm font-medium text-red-700">{t('titleEmpty')}</label>}
                 </div>
                 <div className="mb-5">
                     <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{t('description')}</label>
