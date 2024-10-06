@@ -7,8 +7,6 @@ import Switch from '../switch';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import useI18n from '../../i18n';
-// import i18n from '../../i18n';
-
 const DrawerContent = () => {
     const theme = useSelector((state: any) => state?.theme?.theme?.palette?.background?.default);
     const [open, setOpen] = useState(false);

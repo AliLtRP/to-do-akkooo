@@ -26,17 +26,17 @@ const Home = () => {
             <Sider />
 
             <div
-                className={`transform transition-transform duration-300 ease-in-out ${i18n?.dir() || 'ltr' === 'ltr'
+                className={`transform transition-transform duration-300 ease-in-out ${i18n?.dir() === 'ltr'
                     ? (drawerFlag ? 'translate-x-0' : '-translate-x-full')
                     : (drawerFlag ? 'translate-x-0' : 'translate-x-full')
                     }`}
                 style={{ minWidth: '18rem' }}
-                dir={i18n?.dir() || 'ltr'}
+                dir={i18n?.dir()}
             >
                 <DrawerContent />
             </div>
 
-            <div className={`flex-grow transition-all duration-300 ease-in-out ${drawerFlag ? 'ml-0 mr-0' : (i18n?.dir() || 'ltr' === 'ltr' ? '-ml-72' : '-mr-72')
+            <div className={`flex-grow transition-all duration-300 ease-in-out ${drawerFlag ? 'ml-0 mr-0' : (i18n?.dir() === 'ltr' ? '-ml-72' : '-mr-72')
                 }`}>
                 <AppBar position="static" style={{ backgroundColor: theme !== "#000000" ? "#fff" : "#292B31", boxShadow: "none", height: "100dvh" }}>
                     <Toolbar className='w-full h-full flex flex-col'>
@@ -49,9 +49,9 @@ const Home = () => {
                                 <SearchIcon style={{ color: textColor }} />
                                 <NotificationsIcon style={{ color: textColor }} />
 
-                                <Calender color={textColor} className={`${i18n?.dir() || 'ltr' === "ltr" ? "-ml-5" : "-ml-0"}`} />
+                                <Calender color={textColor} className={`${i18n?.dir() === "ltr" ? "-ml-5" : "-ml-0"}`} />
 
-                                <Typography variant="h6" style={{ color: textColor, fontWeight: "600", marginLeft: i18n?.dir() || 'ltr' === "ltr" ? "-20px" : "0px" }}>
+                                <Typography variant="h6" style={{ color: textColor, fontWeight: "600", marginLeft: i18n?.dir() === "ltr" ? "-20px" : "0px" }}>
                                     19 May 2022
                                 </Typography>
 
