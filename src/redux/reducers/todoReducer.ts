@@ -1,4 +1,4 @@
-import { ITodoAction, ITodoState, ITodo } from "../../types";
+import { ITodoAction, ITodoState, ITodo, IPayload } from "../../types";
 
 const initialState: ITodoState = {
     todo: [],
@@ -19,7 +19,6 @@ export const todoReducer = (state = initialState, action: ITodoAction): ITodoSta
             } else {
                 return state;
             }
-
         case "ADD_TASK":
             return {
                 ...state,
@@ -43,7 +42,29 @@ export const todoReducer = (state = initialState, action: ITodoAction): ITodoSta
                 progress: state.progress.filter(task => task.title !== (action.payload as ITodo).title),
                 done: [...state.done, action.payload as ITodo]
             };
+        case "DELETE_TASK": {
+            const { type, todo } = action.payload as IPayload;
 
+            switch (type) {
+                case "todo":
+                    return {
+                        ...state,
+                        todo: state.todo.filter((v) => v.title !== todo.title)
+                    };
+                case "progress":
+                    return {
+                        ...state,
+                        progress: state.progress.filter((v) => v.title !== todo.title)
+                    };
+                case "done":
+                    return {
+                        ...state,
+                        done: state.done.filter((v) => v.title !== todo.title)
+                    };
+                default:
+                    return state;
+            }
+        }
         default:
             return state;
     }

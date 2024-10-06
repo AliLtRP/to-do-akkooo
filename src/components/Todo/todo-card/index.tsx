@@ -81,6 +81,24 @@ const TodoCard = ({ theme, todo, type }: { theme: string, type: any, todo: ITodo
         }
     };
 
+    const handleDelete = () => {
+        dispatch({ type: "DELETE_TASK", payload: { type, todo } });
+    }
+
+    const handleProgressValue = () => {
+        switch (type) {
+            case "todo":
+                return 1
+            case "progress":
+                return 5;
+            case 'done':
+                return 10;
+            default:
+                return
+        }
+    }
+
+
     return (
         <Card variant="outlined" style={{ borderRadius: "12px", border: '2px solid #1c1d2216', height: '200px', minHeight: '200px', backgroundColor: isLight() }}>
             <CardContent className='rounded-xl bg-whit' style={{ paddingBottom: '16px' }}>
@@ -110,9 +128,10 @@ const TodoCard = ({ theme, todo, type }: { theme: string, type: any, todo: ITodo
                             }}
                         >
                             <ul className='w-full'>
-                                <li className='px-4 py-1 text-center' onClick={handleTodo}>{t('todo')}</li>
-                                <li className='px-4 py-1 text-center' onClick={handleProgress}>{t('progress')}</li>
-                                <li className='px-4 py-1 text-center' onClick={handleDone}>{t('done')}</li>
+                                <li className='px-4 py-1 text-center cursor-pointer' onClick={handleTodo}>{t('todo')}</li>
+                                <li className='px-4 py-1 text-center cursor-pointer' onClick={handleProgress}>{t('progress')}</li>
+                                <li className='px-4 py-1 text-center cursor-pointer' onClick={handleDone}>{t('done')}</li>
+                                <li className='px-4 py-1 text-center cursor-pointer' onClick={handleDelete}>{t('delete')}</li>
                             </ul>
                         </Popover>
                     </div>
@@ -132,7 +151,7 @@ const TodoCard = ({ theme, todo, type }: { theme: string, type: any, todo: ITodo
                         </div>
 
                         <Typography style={{ fontSize: "14px", fontWeight: '600' }}>
-                            1/10
+                            {handleProgressValue()}/10
                         </Typography>
                     </div>
 

@@ -8,9 +8,13 @@ export interface IThemeAction {
 
 export interface ITodoAction {
     type: string,
-    payload: ITodo | ITodo[];
+    payload: ITodo | ITodo[] | IPayload;
 }
 
+export interface IPayload {
+    type: string,
+    todo: ITodo
+}
 export interface ITodo {
     title: string,
     description: string
