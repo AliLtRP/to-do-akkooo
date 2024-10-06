@@ -7,6 +7,10 @@ function App() {
   const theme = useSelector((state: any) => state?.theme?.theme?.palette?.background?.default);
   const flag = useSelector((state: any) => state?.form?.flag);
 
+  const todo = useSelector((state: any) => state?.todo);
+
+  console.log(todo);
+
   return (
     <div className={`${theme === '#000000' ? "!text-white" : "!text-[#1C1D22]"} exo-2 fade-in`}>
       <Home />

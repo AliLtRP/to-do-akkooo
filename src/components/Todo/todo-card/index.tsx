@@ -8,7 +8,7 @@ import { ITodo } from '../../../types';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-const TodoCard = ({ theme, todo }: { theme: string, todo: ITodo }) => {
+const TodoCard = ({ theme, todo, type }: { theme: string, type: any, todo: ITodo }) => {
     const { t } = useTranslation();
     const [popFlag, setPopFlag] = useState<boolean>(false);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -54,6 +54,32 @@ const TodoCard = ({ theme, todo }: { theme: string, todo: ITodo }) => {
         dispatch({ type: "ADD_TASK", payload: todo });
         handleClose();
     }
+
+    const getWidthStyle = (type: string) => {
+        switch (type) {
+            case 'todo':
+                return '0%';
+            case 'progress':
+                return '50%';
+            case 'done':
+                return '100%';
+            default:
+                return '0%';
+        }
+    };
+
+    const getBackgroundStyle = (type: string) => {
+        switch (type) {
+            case 'todo':
+                return '#FF7979';
+            case 'progress':
+                return '#FFA048';
+            case 'done':
+                return '#78D700';
+            default:
+                return '#FF7979';
+        }
+    };
 
     return (
         <Card variant="outlined" style={{ borderRadius: "12px", border: '2px solid #1c1d2216', height: '200px', minHeight: '200px', backgroundColor: isLight() }}>
@@ -111,7 +137,10 @@ const TodoCard = ({ theme, todo }: { theme: string, todo: ITodo }) => {
                     </div>
 
                     <div className='w-full rounded-lg bg-[#EDEDED] flex'>
-                        <span className='bg-black w-10 p-0.5 rounded-lg'></span>
+                        <span
+                            className='p-0.5 rounded-lg transition-all duration-300'
+                            style={{ width: getWidthStyle(type), backgroundColor: getBackgroundStyle(type) }}
+                        ></span>
                     </div>
 
                     <div className='w-full flex items-center justify-between mt-2'>

@@ -12,43 +12,37 @@ export const todoReducer = (state = initialState, action: ITodoAction): ITodoSta
             if (Array.isArray(action.payload)) {
                 return {
                     ...state,
-                    todo: action.payload
+                    todo: action.payload,
+                    progress: [],
+                    done: []
                 };
             } else {
                 return state;
             }
 
         case "ADD_TASK":
-            if (!Array.isArray(action.payload)) {
-                return {
-                    ...state,
-                    todo: [...state.todo, action.payload as ITodo]
-                };
-            } else {
-                return state;
-            }
+            return {
+                ...state,
+                todo: [...state.todo, action.payload as ITodo],
+                progress: state.progress.filter(task => task.title !== (action.payload as ITodo).title),
+                done: state.done.filter(task => task.title !== (action.payload as ITodo).title)
+            };
 
         case "PROGRESS_TASK":
-            if (!Array.isArray(action.payload)) {
-                return {
-                    ...state,
-                    todo: state.todo.filter(task => task.title !== (action.payload as ITodo).title),
-                    progress: [...state.progress, action.payload as ITodo]
-                };
-            } else {
-                return state;
-            }
+            return {
+                ...state,
+                todo: state.todo.filter(task => task.title !== (action.payload as ITodo).title),
+                progress: [...state.progress, action.payload as ITodo],
+                done: state.done.filter(task => task.title !== (action.payload as ITodo).title)
+            };
 
         case "COMPLETE_TASK":
-            if (!Array.isArray(action.payload)) {
-                return {
-                    ...state,
-                    progress: state.progress.filter(task => task.title !== (action.payload as ITodo).title),
-                    done: [...state.done, action.payload as ITodo]
-                };
-            } else {
-                return state;
-            }
+            return {
+                ...state,
+                todo: state.todo.filter(task => task.title !== (action.payload as ITodo).title),
+                progress: state.progress.filter(task => task.title !== (action.payload as ITodo).title),
+                done: [...state.done, action.payload as ITodo]
+            };
 
         default:
             return state;

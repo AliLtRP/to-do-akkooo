@@ -51,11 +51,11 @@ const Todo = ({ theme, type }: { theme: string, type: string }) => {
                 </div>
             </div>
 
-            <div className='flex flex-col overflow-y-scroll gap-4 no-scrollbar'>
+            <div className='h-[100vh] flex flex-col overflow-y-scroll gap-4 no-scrollbar'>
                 {
                     todoTasks?.map((v: ITodo) => {
                         return (
-                            <TodoCard todo={v} theme={theme} />
+                            <TodoCard type={type} todo={v} theme={theme} />
                         );
                     })
                 }
@@ -64,4 +64,4 @@ const Todo = ({ theme, type }: { theme: string, type: string }) => {
     )
 }
 
-export default Todo
+export default Todo;
