@@ -8,11 +8,12 @@ import Docs from '../../icons/docs';
 import Settings from '../../icons/settings';
 import Home from '../../icons/Home';
 import DrawerFooter from './DrawerFooter';
-import i18n from '../../i18n';
+import useI18n from '../../i18n';
 
 const Sider = () => {
     const [toggle, setToggle] = useState<boolean>(true);
     const [select, setSelect] = useState<number>(0);
+    const i18n = useI18n();
 
     const handleClick = () => {
         setToggle(!toggle);

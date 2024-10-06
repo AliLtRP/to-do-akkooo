@@ -1,7 +1,8 @@
 import { Collapse, List, ListItem, ListItemText } from "@mui/material"
-import i18n from "../../i18n"
+import useI18n from "../../i18n"
 
 const Collapsed = ({ open, handleClose }: any) => {
+    const i18n = useI18n();
 
     return (
         <Collapse in={open} timeout="auto" unmountOnExit>

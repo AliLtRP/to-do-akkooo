@@ -6,12 +6,14 @@ import Collapsed from '../collapse';
 import Switch from '../switch';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import i18n from '../../i18n';
+import useI18n from '../../i18n';
+// import i18n from '../../i18n';
 
 const DrawerContent = () => {
     const theme = useSelector((state: any) => state?.theme?.theme?.palette?.background?.default);
     const [open, setOpen] = useState(false);
     const { t } = useTranslation();
+    const i18n = useI18n();
 
     const handleMenuClick = () => {
         setOpen((prevOpen) => !prevOpen);
@@ -23,9 +25,9 @@ const DrawerContent = () => {
 
     const handleListIcon = () => {
         if (open) {
-            return i18n.dir() === "ltr" ? "rotate(0deg)" : "rotate(0deg)";
+            return i18n?.dir() === "ltr" ? "rotate(0deg)" : "rotate(0deg)";
         } else {
-            return i18n.dir() === "ltr" ? "rotate(-90deg)" : "rotate(90deg)";
+            return i18n?.dir() === "ltr" ? "rotate(-90deg)" : "rotate(90deg)";
         }
     }
 

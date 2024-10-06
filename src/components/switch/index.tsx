@@ -3,11 +3,12 @@ import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import NightlightRoundRoundedIcon from '@mui/icons-material/NightlightRoundRounded';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import i18n from '../../i18n';
+import useI18n from '../../i18n';
 
 const Switch = ({ translate }: { translate?: boolean }) => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
+    const i18n = useI18n();
 
     const themeColor = useSelector((state: any) => state?.theme?.theme?.palette?.background?.default);
 
@@ -18,7 +19,7 @@ const Switch = ({ translate }: { translate?: boolean }) => {
     const handleDir = () => {
         const newLanguage = i18n.language === "en" ? "ar" : "en";
         i18n.changeLanguage(newLanguage);
-        document.body.dir = i18n.dir(newLanguage);
+        document.body.dir = i18n?.dir(newLanguage);
     };
 
     const handleClick = () => {
