@@ -1,45 +1,58 @@
-import { Card, CardContent, Typography } from '@mui/material'
+import { Card, CardContent, Popover, Typography } from '@mui/material'
 import Progress from '../../../icons/progress'
 import Clip from '../../../icons/clip'
 import CommentICon from '../../../icons/comment'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { useTranslation } from 'react-i18next';
 import { ITodo } from '../../../types';
-
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 const TodoCard = ({ theme, todo }: { theme: string, todo: ITodo }) => {
     const { t } = useTranslation();
+    const [popFlag, setPopFlag] = useState<boolean>(false);
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const dispatch = useDispatch();
 
     const isLight = (): string => {
-        if (theme !== '#000000') {
-            return "#fff"
-        }
-
-        return "#292B30"
-    }
+        return theme !== '#000000' ? "#fff" : "#292B30";
+    };
 
     const progressTypoColor = () => {
-        if (theme !== '#000000') {
-            return "#8D8E90"
-        }
-
-        return "#949598"
-    }
+        return theme !== '#000000' ? "#8D8E90" : "#949598";
+    };
 
     const dateBackgroundColor = () => {
-        if (theme !== "#000000") {
-            return "#F3F3F6"
-        }
-
-        return "#35373D"
-    }
+        return theme !== "#000000" ? "#F3F3F6" : "#35373D";
+    };
 
     const dateColor = () => {
-        if (theme !== "#000000") {
-            return "#888DA7";
-        }
+        return theme !== "#000000" ? "#888DA7" : "#989CAA";
+    };
 
-        return "#989CAA";
+    const changeTaskStatus = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+        setPopFlag(!popFlag);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+        setPopFlag(false);
+    };
+
+    const handleProgress = () => {
+        dispatch({ type: "PROGRESS_TASK", payload: todo });
+        handleClose();
+    }
+
+    const handleDone = () => {
+        dispatch({ type: "COMPLETE_TASK", payload: todo });
+        handleClose();
+    }
+
+    const handleTodo = () => {
+        dispatch({ type: "ADD_TASK", payload: todo });
+        handleClose();
     }
 
     return (
@@ -51,9 +64,31 @@ const TodoCard = ({ theme, todo }: { theme: string, todo: ITodo }) => {
                             {todo?.title}
                         </Typography>
 
-                        <div className={`flex justify-center items-center border-[2px] ${theme === "#000000" ? "border-[#3F4147]" : "border-[#E8E8E9]"} rounded-full`}>
+                        <div
+                            className={`flex justify-center items-center border-[2px] ${theme === "#000000" ? "border-[#3F4147]" : "border-[#E8E8E9]"} rounded-full`}
+                            onClick={changeTaskStatus}
+                        >
                             <MoreHorizIcon style={{ color: theme === "#000000" ? "#fff" : "#1C1D22" }} fontSize="small" />
                         </div>
+                        <Popover
+                            open={popFlag}
+                            anchorEl={anchorEl}
+                            onClose={handleClose}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center',
+                            }}
+                            transformOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center',
+                            }}
+                        >
+                            <ul className='w-full'>
+                                <li className='px-4 py-1 text-center' onClick={handleTodo}>To do</li>
+                                <li className='px-4 py-1 text-center' onClick={handleProgress}>Progress</li>
+                                <li className='px-4 py-1 text-center' onClick={handleDone}>Done</li>
+                            </ul>
+                        </Popover>
                     </div>
 
                     <Typography variant="h6" style={{ fontSize: '14px', color: "#8D8E90", fontWeight: '500' }}>
@@ -102,7 +137,7 @@ const TodoCard = ({ theme, todo }: { theme: string, todo: ITodo }) => {
                 </div>
             </CardContent>
         </Card>
-    )
-}
+    );
+};
 
-export default TodoCard
+export default TodoCard;
