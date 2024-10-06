@@ -39,7 +39,7 @@ const Todo = ({ theme, type }: { theme: string, type: string }) => {
         <div className=' max-h-[calc(100%-102px)] h-full flex flex-col gap-3 basis-1/3 rounded-xl p-3'>
             <div className='flex justify-between items-center'>
                 <Typography variant="h6" className='font-semibold text-sm' style={{ fontWeight: "600", fontSize: "14px", color: typoColor() }}>
-                    {t('To do')} (4)
+                    {t(type)} ({todo?.[type].length})
                 </Typography>
 
                 <div className='flex items-center gap-2' onClick={addTodoTask}>

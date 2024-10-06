@@ -9,10 +9,10 @@
   "Board view": "Board view",
   "Add view": "Add view",
   "Add New": "Add New",
-  "To do": "To do",
+  "todo": "To do",
   "Add new task": "Add new task",
-  "In progress": "In progress",
-  "Done": "Done",
+  "progress": "In progress",
+  "done": "Done",
   "Progress": "Progress",
   "Team": "Team"
 }

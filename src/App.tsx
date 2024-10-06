@@ -8,10 +8,6 @@ function App() {
   const theme = useSelector((state: any) => state?.theme?.theme?.palette?.background?.default);
   const flag = useSelector((state: any) => state?.form?.flag);
 
-  const todo = useSelector((state: any) => state?.todo);
-
-  console.log(todo);
-
   useI18n();
 
   return (

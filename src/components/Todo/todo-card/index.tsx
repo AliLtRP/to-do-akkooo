@@ -110,9 +110,9 @@ const TodoCard = ({ theme, todo, type }: { theme: string, type: any, todo: ITodo
                             }}
                         >
                             <ul className='w-full'>
-                                <li className='px-4 py-1 text-center' onClick={handleTodo}>To do</li>
-                                <li className='px-4 py-1 text-center' onClick={handleProgress}>Progress</li>
-                                <li className='px-4 py-1 text-center' onClick={handleDone}>Done</li>
+                                <li className='px-4 py-1 text-center' onClick={handleTodo}>{t('todo')}</li>
+                                <li className='px-4 py-1 text-center' onClick={handleProgress}>{t('progress')}</li>
+                                <li className='px-4 py-1 text-center' onClick={handleDone}>{t('done')}</li>
                             </ul>
                         </Popover>
                     </div>

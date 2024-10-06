@@ -9,10 +9,10 @@
   "Board view": "عرض لوحة",
   "Add view": "إضافة عرض",
   "Add New": "إضافة جديدة",
-  "To do": "للقيام",
+  "todo": "للقيام",
   "Add new task": "إضافة مهمة جديدة",
-  "In progress": "قيد التنفيذ",
-  "Done": "تم",
+  "progress": "قيد التنفيذ",
+  "done": "تم",
   "Progress": "التقدم",
   "Team": "فريق"
 }
