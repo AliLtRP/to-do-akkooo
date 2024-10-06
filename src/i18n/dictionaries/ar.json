@@ -14,5 +14,8 @@
   "progress": "قيد التنفيذ",
   "done": "تم",
   "Progress": "التقدم",
-  "Team": "فريق"
+  "Team": "فريق",
+  "title": "عنوان",
+  "description": "وصف",
+  "Add Task": "إضافة مهمة"
 }

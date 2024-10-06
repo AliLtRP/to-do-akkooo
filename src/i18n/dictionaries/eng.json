@@ -14,5 +14,8 @@
   "progress": "In progress",
   "done": "Done",
   "Progress": "Progress",
-  "Team": "Team"
+  "Team": "Team",
+  "title": "Title",
+  "description": "Description",
+  "Add Task": "Add Task"
 }
