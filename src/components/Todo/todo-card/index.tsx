@@ -112,7 +112,7 @@ const TodoCard = ({ theme, todo, type }: { theme: string, type: any, todo: ITodo
                             className={`flex justify-center items-center border-[2px] ${theme === "#000000" ? "border-[#3F4147]" : "border-[#E8E8E9]"} rounded-full`}
                             onClick={changeTaskStatus}
                         >
-                            <MoreHorizIcon style={{ color: theme === "#000000" ? "#fff" : "#1C1D22" }} fontSize="small" />
+                            <MoreHorizIcon style={{ color: theme === "#000000" ? "#fff" : "#1C1D22", cursor: 'pointer' }} fontSize="small" />
                         </div>
                         <Popover
                             open={popFlag}

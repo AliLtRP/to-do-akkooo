@@ -18,5 +18,6 @@
   "title": "Title",
   "description": "Description",
   "Add Task": "Add Task",
-  "titleEmpty": "Title Is Empty"
+  "titleEmpty": "Title Is Empty",
+  "delete": "Delete"
 }

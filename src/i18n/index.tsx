@@ -25,7 +25,7 @@ const useI18n = () => {
     });
   }, [resources]);
 
-  return i18n;  // Return the i18n instance so you can use it in components
+  return i18n;
 };
 
 export default useI18n;

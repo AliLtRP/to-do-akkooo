@@ -42,7 +42,7 @@ const Todo = ({ theme, type }: { theme: string, type: string }) => {
                     {t(type)} ({todo?.[type].length})
                 </Typography>
 
-                <div className='flex items-center gap-2' onClick={addTodoTask}>
+                <div className='flex items-center gap-2 cursor-pointer' onClick={addTodoTask}>
                     <AddCircleIcon fontSize="inherit" className={`${theme === "#000000" ? "text-[#fff]" : "text-[#1C1D22]"}`} style={{ marginTop: "3px" }} />
 
                     <Typography variant='h6' style={{ fontWeight: "600", fontSize: "14px", color: theme === "#000000" ? "#FFFFFF" : "#1C1D22", opacity: '0.5' }}>

@@ -18,5 +18,6 @@
   "title": "عنوان",
   "description": "وصف",
   "Add Task": "إضافة مهمة",
-  "titleEmpty": "العنوان فارغ"
+  "titleEmpty": "العنوان فارغ",
+  "delete": "حذف"
 }
